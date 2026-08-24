@@ -1,0 +1,22 @@
+{
+  "extension": "@mgreten/local-dev-server",
+  "version": "2026.08.24.1",
+  "reviewedAt": "2026-08-24T00:00:00Z",
+  "dimensions": [
+    { "id": "credentials-secrets", "verdict": "pass", "note": "No secret inputs or persisted command output; bounded failure excerpts redact common credential patterns and logs omit commands, paths, and output." },
+    { "id": "logging-quality", "verdict": "pass", "note": "Every method logs entry and successful completion with structured non-sensitive status properties." },
+    { "id": "error-handling", "verdict": "pass", "note": "Validation, command, readiness, timeout, cancellation, and certificate failures throw before the single status resource write." },
+    { "id": "testing-completeness", "verdict": "pass", "note": "Seventeen synthetic tests cover success, malformed input, readiness and postcondition failures, timeout and cancellation cleanup, bounded output, and redaction." },
+    { "id": "idempotency-resilience", "verdict": "pass", "note": "Lifecycle commands are explicitly trusted supervisor-owned configuration and required to be idempotent; postconditions are verified before persistence." },
+    { "id": "api-contracts", "verdict": "na", "note": "No external provider API; optional HTTP health checks are syntactically loopback-only, redirect-disabled, deadline-bounded, cancellable, and retried." },
+    { "id": "resource-management", "verdict": "pass", "note": "Command duration and captured output are bounded; Linux process groups are terminated and streams settled on timeout/cancellation. The documented macOS detached-descendant limitation remains supervisor-owned." },
+    { "id": "published-surface-hygiene", "verdict": "pass", "note": "README uses generic local examples and loopback addresses and explicitly documents additive Moment Savor integration rather than internal identifiers." },
+    { "id": "schema-strictness", "verdict": "pass", "note": "Global, nested, method, and output schemas are strict; authority is fixed to local-development and health URLs reject credentials/non-loopback hosts." },
+    { "id": "lifetime-gc", "verdict": "pass", "note": "The sole status resource declares infinite lifetime and bounded garbage collection." },
+    { "id": "crud-completeness", "verdict": "pass", "note": "The generic local lifecycle is fully represented by start, stop, and status; process ownership deliberately remains with the configured supervisor." },
+    { "id": "preflight-checks", "verdict": "pass", "note": "Start and stop have a labeled policy check resolving and confining working directories to the Swamp repository tree." },
+    { "id": "instance-names", "verdict": "pass", "note": "Mechanical review confirms all three methods write the same six-field strict StatusSchema to status-current with complete 1:1 schema/write coverage and no caps or truncation." },
+    { "id": "data-access", "verdict": "na", "note": "Methods observe local supervisor and health state directly and do not read persisted resources." },
+    { "id": "version-upgrades", "verdict": "na", "note": "This remains the first registry publication; there is no published model version or stored schema requiring migration." }
+  ]
+}
